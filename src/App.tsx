@@ -76,7 +76,7 @@ function App() {
                     <h1 className="font-weight-bold">{data.name}</h1>
                     <img
                       className="ml-auto"
-                      src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                      src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
                     />
                   </div>
                   <div className="d-flex align-items-center desc-text justify-content-around">
