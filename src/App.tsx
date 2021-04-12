@@ -114,7 +114,7 @@ function App() {
                   <iframe
                     frameBorder="0"
                     className="map"
-                    src={`http://maps.google.com/maps?q=${data.coord.lat},${data.coord.lon}&z=12&output=embed`}
+                    src={`https://maps.google.com/maps?q=${data.coord.lat},${data.coord.lon}&z=12&output=embed`}
                     height="450"
                     allowFullScreen
                     loading="lazy"
