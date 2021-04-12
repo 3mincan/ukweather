@@ -4,6 +4,7 @@ import * as moment from "moment";
 import "./App.scss";
 import cities from "./data/ukcities.json";
 import { useGA4React } from "ga-4-react";
+import logo from "./assets/logo.png";
 
 let apiKey = "3d7132f0e89f9435962d14739075d98d";
 
@@ -46,8 +47,11 @@ function App() {
 
   return (
     <>
-      <div className="row align-items-start">
-        <div className="my-5 col-4">
+      <nav className="d-flex justify-content-center my-3">
+        <img src={logo} alt="logo" />
+      </nav>
+      <div className="row">
+        <div className="my-3 col-4">
           <div className="d-flex justify-center">
             <div className="shadow rounded-lg h-600 overflow-auto">
               <ul className="p-4">
@@ -75,7 +79,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="mt-5 col-8">
+        <div className="mt-3 col-8">
           <div className="shadow rounded-lg overflow-hidden">
             {data != null ? (
               <div
