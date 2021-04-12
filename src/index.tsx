@@ -3,8 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import GA4React, { useGA4React } from "ga-4-react";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const ga4react = new GA4React("G-LDXRZM7MZ8");
+
+(async () => {
+  await ga4react.initialize();
+
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+})();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
