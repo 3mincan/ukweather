@@ -31,3 +31,26 @@ span.h4 {
           max-width: 10rem;
     }
   }
+
+  .clear-day {
+    background-color: #d0deec;
+  }
+
+  .clear-night {
+    background-color: #191970;
+  }
+
+    .cloud-day {
+    background-color: #d0deec;
+  }
+
+  .cloud-night {
+    background-color: #858e96;
+  }
+
+  h1.font-weight-bold.rem-3 {
+    margin: 0;
+    img {
+    max-width: 3rem;
+    margin: 0 1rem;
+  }}

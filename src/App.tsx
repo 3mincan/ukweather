@@ -5,6 +5,9 @@ import "./App.scss";
 import cities from "./data/ukcities.json";
 import { useGA4React } from "ga-4-react";
 import logo from "./assets/logo.png";
+import temperature from "./assets/thermometer.svg";
+import humidity from "./assets/humidity.svg";
+import barometer from "./assets/barometer.svg";
 
 let apiKey = "3d7132f0e89f9435962d14739075d98d";
 
@@ -109,10 +112,36 @@ function App() {
                 <div className="d-flex align-items-center desc-text my-3">
                   <h6>{data.weather[0].description}</h6>
                 </div>
-                <div className="d-flex align-items-center mt-3">
-                  <h1 className="font-weight-bold rem-3">
-                    {Math.round(data.main.temp)}°C
-                  </h1>
+                <div className="d-flex align-items-center my-3">
+                  <div className="row w-100">
+                    <div className="col">
+                      <h1
+                        className="font-weight-bold rem-3"
+                        title={`Temperature in ${data.name}`}
+                      >
+                        <img src={temperature} />
+                        {Math.round(data.main.temp)}°C
+                      </h1>
+                    </div>
+                    <div className="col">
+                      <h1
+                        className="font-weight-bold rem-3"
+                        title={`Humidity in ${data.name}`}
+                      >
+                        <img src={humidity} />
+                        {data.main.humidity}%
+                      </h1>
+                    </div>
+                    <div className="col">
+                      <h1
+                        className="font-weight-bold rem-3"
+                        title={`Air Pressure in ${data.name}`}
+                      >
+                        <img src={barometer} />
+                        {data.main.pressure}
+                      </h1>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <iframe
