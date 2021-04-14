@@ -48,9 +48,16 @@ span.h4 {
     background-color: #858e96;
   }
 
-  h1.font-weight-bold.rem-3 {
+  h1.font-weight-bold.h2 {
     margin: 0;
     img {
     max-width: 3rem;
     margin: 0 1rem;
   }}
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none!important;
+    }
+  }

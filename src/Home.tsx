@@ -8,25 +8,12 @@ import logo from "./assets/logo.png";
 import temperature from "./assets/thermometer.svg";
 import humidity from "./assets/humidity.svg";
 import barometer from "./assets/barometer.svg";
-import slugify from "react-slugify";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useParams,
-} from "react-router-dom";
 
 let apiKey = "3d7132f0e89f9435962d14739075d98d";
-type UrlParamsType = {
-  city: string;
-};
 
-const Home = () => {
-  let { city } = useParams<UrlParamsType>();
-
-  const [place, setPlace] = useState<any>("london");
+function Home() {
+  const [place, setPlace] = useState<any>("London");
+  // const [lon, setLon] = useState<any>(-0.33333);
   const [data, setData] = useState<any>(null);
 
   const ga = useGA4React();
@@ -50,7 +37,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    city != undefined ? getList(place) : getList(city);
+    getList(place);
+    console.log(data);
   }, [place]);
 
   cities.sort(function(a: any, b: any) {
@@ -71,27 +59,24 @@ const Home = () => {
             <div className="shadow rounded-lg h-600 overflow-auto">
               <ul className="p-4">
                 {cities.map((city, index) => (
-                  <Link
-                    to={slugify(`${city.name}`)}
+                  <li
+                    className="d-flex p-1 cursor-pointer align-items-center"
+                    key={index}
                     onClick={() => {
                       setPlace(city.name);
-                      // place = city.name;
                     }}
-                    key={index}
                   >
-                    <li className="d-flex p-1 cursor-pointer align-items-center">
-                      {city.name}{" "}
-                      <span className="h4">
-                        {city.subcountry == "Scotland"
-                          ? "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
-                          : city.subcountry == "Wales"
-                          ? "🏴󠁧󠁢󠁷󠁬󠁳󠁿"
-                          : city.subcountry == "England"
-                          ? "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
-                          : "🇬🇧"}
-                      </span>
-                    </li>
-                  </Link>
+                    {city.name}{" "}
+                    <span className="h4">
+                      {city.subcountry == "Scotland"
+                        ? "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+                        : city.subcountry == "Wales"
+                        ? "🏴󠁧󠁢󠁷󠁬󠁳󠁿"
+                        : city.subcountry == "England"
+                        ? "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+                        : "🇬🇧"}
+                    </span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -163,14 +148,14 @@ const Home = () => {
                     frameBorder="0"
                     className="map"
                     src={`https://maps.google.com/maps?q=${data.coord.lat},${data.coord.lon}&z=12&output=embed`}
-                    height="400"
+                    height="450"
                     allowFullScreen
                     loading="lazy"
                   ></iframe>
                 </div>
               </div>
             ) : (
-              <div className="d-flex align-items-center h-100 my-5 justify-content-center">
+              <div className="flex align-items-center justify-content-center">
                 <div className="spinner-border" role="status"></div>
               </div>
             )}
@@ -179,19 +164,6 @@ const Home = () => {
       </div>
     </>
   );
-};
-
-export default function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/london" />
-        </Route>
-        <Route path={`/:city`}>
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
-  );
 }
+
+export default Home;
