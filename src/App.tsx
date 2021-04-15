@@ -106,10 +106,10 @@ const Home = () => {
                   data.clouds.all >= 50
                     ? Date.now() >= data.sys.sunset
                       ? { backgroundColor: "#858e96" }
-                      : { backgroundColor: "#d0deec" }
+                      : { backgroundColor: "#191970" }
                     : Date.now() <= data.sys.sunset
                     ? { backgroundColor: "#87ceeb" }
-                    : { backgroundColor: "#191970" }
+                    : { backgroundColor: "#BBC7D4" }
                 }
               >
                 <div className="d-flex align-items-center">
