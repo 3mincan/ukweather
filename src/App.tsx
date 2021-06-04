@@ -53,7 +53,7 @@ const Home = () => {
     city != undefined ? getList(place) : getList(city);
   }, [place]);
 
-  cities.sort(function(a: any, b: any) {
+  cities.sort(function (a: any, b: any) {
     a = a.name.toLowerCase();
     b = b.name.toLowerCase();
 
